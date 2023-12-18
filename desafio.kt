@@ -1,5 +1,3 @@
-// [Template no Kotlin Playground](https://pl.kotl.in/WcteahpyN)
-
 enum class Nivel { BASICO, INTERMEDIARIO, AVANCADO }
 
 data class Usuario(var nome: String, var email: String, val id: Int){
@@ -18,6 +16,11 @@ data class Formacao(val nome: String, val conteudos: List<ConteudoEducacional>) 
     fun matricular(usuario: Usuario) {
         inscritos.add(usuario)
     }
+
+    operator fun iterator(): Iterator<ConteudoEducacional> {
+        return conteudos.iterator()
+    }
+
 }
 
 fun main() {
@@ -46,6 +49,18 @@ fun main() {
     println("Usuários matriculados na formação Kotlin:")
     for (usuario in formacaoKotlin.inscritos) {
         println(usuario)
+    }
+    println()
+
+    println("Conteúdos da formação Kotlin:")
+    for (conteudo in formacaoKotlin) {
+        println(conteudo)
+    }
+    println()
+
+    println("Conteúdos da formação Android:")
+    for (conteudo in formacaoAndroid) {
+        println(conteudo)
     }
 
 }
